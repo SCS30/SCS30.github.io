@@ -1,5 +1,5 @@
 /* Site styles. Imports the design tokens. */
-@import url("tokens.css?v=11");
+@import url("tokens.css?v=13");
 
 /* ====================================================================
    Reset and root
@@ -175,7 +175,7 @@ a { color: inherit; }
 }
 .head__name {
   font-family: var(--font-display);
-  font-size: clamp(1.25rem, 0.9rem + 0.85vw, 2rem);
+  font-size: clamp(2.125rem, 2.14rem + 1.24vw, 3.75rem);
   font-weight: 700;
   letter-spacing: -0.01em;
   line-height: 1.1;
@@ -185,7 +185,7 @@ a { color: inherit; }
 
 .head__creds {
   font-family: var(--font-ui);
-  font-size: 0.6875rem;
+  font-size: 0.8125rem;
   font-weight: 500;
   letter-spacing: 0.13em;
   text-transform: uppercase;
@@ -196,7 +196,7 @@ a { color: inherit; }
 
 .head__logo {
   grid-column: 1;
-  justify-self: start;
+  justify-self: center;
   display: flex;
   border: var(--rule-hair) solid var(--color-rule-2);
   border-radius: var(--radius-sm);
@@ -210,19 +210,19 @@ a { color: inherit; }
   display: grid;
   align-content: center;
   gap: 2px;
-  padding: 0.3rem 0.65rem 0.4rem;
-  min-width: 3.9rem;
+  padding: 0.4rem 0.9rem 0.5rem;
+  min-width: 5rem;
   font-family: var(--font-ui);
   line-height: 1;
   text-align: start;
 }
 .el + .el { border-inline-start: var(--rule-hair) solid var(--color-rule-2); }
-.el__z   { font-size: 0.625rem; font-weight: 500; color: var(--color-muted); font-variant-numeric: tabular-nums; }
-.el__sym { font-family: var(--font-display); font-size: 1.75rem; font-weight: 700; color: var(--color-accent); line-height: 1.05; }
+.el__z   { font-size: 0.8125rem; font-weight: 500; color: var(--color-muted); font-variant-numeric: tabular-nums; }
+.el__sym { font-family: var(--font-display); font-size: 3.25rem; font-weight: 700; color: var(--color-accent); line-height: 1.05; }
 
 .head__end {
   grid-column: 3;
-  justify-self: end;
+  justify-self: center;
   display: flex;
   align-items: center;
   gap: var(--space-sm);
@@ -232,14 +232,14 @@ a { color: inherit; }
 .head__menu {
   display: inline-flex;
   align-items: center;
-  min-height: 2.5rem;
-  padding-inline: var(--space-lg);
+  min-height: 3rem;
+  padding-inline: var(--space-xl);
   border: var(--rule-hair) solid var(--color-rule-2);
   border-radius: var(--radius-md);
   background: var(--color-paper);
   color: var(--color-ink-2);
   font-family: var(--font-ui);
-  font-size: 0.8125rem;
+  font-size: 0.9375rem;
   font-weight: 600;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -265,7 +265,7 @@ a { color: inherit; }
 }
 .head__nav a {
   font-family: var(--font-ui);
-  font-size: 0.8125rem;
+  font-size: 0.9375rem;
   font-weight: 500;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -280,11 +280,16 @@ a { color: inherit; }
 .head__nav a[aria-current="true"] { color: var(--color-accent); border-block-end-color: var(--color-accent); }
 
 @media (max-width: 61.99rem) {
-  .head__name { font-size: 1.0625rem; }
-  .head__creds { font-size: 0.5625rem; letter-spacing: 0.08em; }
-  .el { min-width: 2.9rem; padding: 0.3rem 0.5rem 0.35rem; }
-  .el__sym { font-size: 1.5rem; }
-  .el__z { font-size: 0.5625rem; }
+  /* The name cannot sit on one line beside the logo and the menu button at
+     phone widths, so it is allowed to wrap here. */
+  .head__name { font-size: 1.125rem; white-space: normal; }
+  .head__creds { font-size: 0.5625rem; letter-spacing: 0.06em; }
+  .el { min-width: 2.5rem; padding: 0.25rem 0.45rem 0.3rem; }
+  .el__sym { font-size: 1.25rem; }
+  .el__z { font-size: 0.5rem; }
+  .head__menu { font-size: 0.75rem; min-height: 2.5rem; padding-inline: var(--space-md); }
+  .head__logo { justify-self: start; }
+  .head__end { justify-self: end; }
   .head__menu { display: inline-flex; }
   .head__top  { display: none; }
   .head__nav {
@@ -460,6 +465,16 @@ a { color: inherit; }
 /* Figure sits below the citation at full measure, so the chemistry is legible
    and the licence credit sits directly beneath the thing it covers. */
 .pub__fig { margin: 0; margin-block-start: var(--space-lg); min-width: 0; }
+.pub__figlink {
+  display: inline-block;
+  text-decoration: none;
+  border-radius: var(--radius-sm);
+}
+.pub__figlink img { transition: border-color var(--dur-micro) var(--ease-out); }
+@media (hover: hover) and (pointer: fine) {
+  .pub__figlink:hover img { border-color: var(--color-accent); }
+}
+
 .pub__fig img {
   display: block;
   max-width: 100%;
