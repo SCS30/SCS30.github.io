@@ -132,7 +132,7 @@ a { color: inherit; }
 .lnk:active { color: var(--color-accent-2); }
 
 /* ====================================================================
-   Side-rail nav
+   Side-rail: a standing table of contents
    ==================================================================== */
 
 .rail {
@@ -143,75 +143,60 @@ a { color: inherit; }
   width: var(--rail-w);
   display: none;
   flex-direction: column;
-  align-items: center;
-  padding-block: var(--space-lg);
+  padding: var(--space-xl) var(--space-lg);
   border-inline-end: var(--rule-hair) solid var(--color-rule);
   background: var(--color-paper);
 }
 
 .rail__mark {
-  writing-mode: vertical-rl;
-  transform: rotate(180deg);
   font-family: var(--font-ui);
   font-size: var(--text-2xs);
-  font-weight: 500;
-  letter-spacing: 0.22em;
+  font-weight: 600;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
+  line-height: 1.5;
   color: var(--color-ink);
   text-decoration: none;
-  white-space: nowrap;
 }
 
 .rail__list {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: var(--space-md);
+  gap: var(--space-3xs);
   margin-block: auto;
 }
 
 .rail__link {
-  position: relative;
-  display: grid;
-  place-items: center;
-  width: var(--space-lg);
-  height: var(--space-lg);
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding-block: var(--space-xs);
+  font-family: var(--font-ui);
+  font-size: var(--text-2xs);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  line-height: 1;
+  color: var(--color-muted);
   text-decoration: none;
   white-space: nowrap;
+  transition: color var(--dur-micro) var(--ease-out);
 }
-/* 44px hit target without changing visual size */
-.rail__link::before { content: ""; position: absolute; inset: calc(var(--space-xs) * -1); }
+@media (hover: hover) and (pointer: fine) {
+  .rail__link:hover { color: var(--color-ink); }
+}
+.rail__link[aria-current="true"] { color: var(--color-accent); font-weight: 600; }
 
 .rail__dot {
-  width: 6px;
-  height: 6px;
+  flex: 0 0 auto;
+  width: 5px;
+  height: 5px;
   border-radius: 50%;
   background: var(--color-rule-2);
   transition: background-color var(--dur-micro) var(--ease-out);
 }
 .rail__link[aria-current="true"] .rail__dot { background: var(--color-accent); }
-
-/* Label shows on hover AND focus. Hover waits; focus is instant. */
-.rail__label {
-  position: absolute;
-  inset-inline-start: calc(100% + var(--space-2xs));
-  padding: var(--space-3xs) var(--space-xs);
-  background: var(--color-ink);
-  color: var(--color-paper);
-  font-family: var(--font-ui);
-  font-size: var(--text-2xs);
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  white-space: nowrap;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity var(--dur-micro) var(--ease-out);
-}
-.rail__link:focus-visible .rail__label { opacity: 1; transition-delay: 0ms; }
-@media (hover: hover) and (pointer: fine) {
-  .rail__link:hover .rail__label { opacity: 1; transition-delay: 800ms; }
-}
 
 /* Mobile top bar: the rail's fallback below 60rem */
 .topbar {
@@ -298,6 +283,9 @@ a { color: inherit; }
   flex-direction: column-reverse;
   align-items: flex-start;
   gap: var(--space-lg);
+  /* Capped so the portrait stays beside the name on wide screens instead of
+     drifting to the far edge of the column. */
+  max-width: 46rem;
 }
 @media (min-width: 34rem) {
   .open__head { flex-direction: row; align-items: flex-start; justify-content: space-between; gap: var(--space-xl); }
@@ -415,8 +403,9 @@ a { color: inherit; }
 .pub {
   padding-block: var(--space-xl);
   border-block-start: var(--rule-hair) solid var(--color-rule);
-  max-width: var(--measure);
 }
+/* Text stays at measure; the figure uses the full column. */
+.pub > :not(.pub__fig) { max-width: var(--measure); }
 .pub:first-child { border-block-start: 0; padding-block-start: 0; }
 
 /* Figure sits below the citation at full measure, so the chemistry is legible
@@ -562,7 +551,6 @@ a { color: inherit; }
   display: grid;
   gap: var(--space-xl);
   margin-block-start: var(--space-2xl);
-  max-width: var(--measure);
 }
 @media (min-width: 44rem) {
   .places { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--space-lg); }
@@ -817,10 +805,17 @@ select.input { cursor: pointer; }
    Rail activates at desktop width
    ==================================================================== */
 
+/* The rail is fixed, so the body is inset by its width and the document is
+   centred in what remains. The reading column stays at measure; figures,
+   tables and the logo strip take the extra width instead. */
 @media (min-width: 60rem) {
   .rail   { display: flex; }
   .topbar { display: none; }
-  .doc, .colophon__inner { padding-inline-start: calc(var(--rail-w) + var(--space-xl)); }
+  body    { padding-inline-start: var(--rail-w); }
+  .doc, .colophon__inner { max-width: 54rem; padding-inline: var(--space-2xl); }
+}
+@media (min-width: 100rem) {
+  .doc, .colophon__inner { max-width: 62rem; }
 }
 
 .vh {
