@@ -7,17 +7,20 @@
   --font-body:    "EB Garamond", ui-serif, Garamond, Georgia, "Times New Roman", serif;
   --font-ui:      "IBM Plex Sans", ui-sans-serif, "Segoe UI", Helvetica, Arial, sans-serif;
 
-  /* ---- Type scale · 1.25 major third.
-     Garamond runs small, so the reading base is set larger than usual. --- */
-  --text-2xs:  0.75rem;
-  --text-xs:   0.875rem;
-  --text-sm:   1rem;
-  --text-base: 1.1875rem;
-  --text-md:   1.375rem;
-  --text-lg:   1.6875rem;
-  --text-xl:   2.125rem;
-  --text-2xl:  2.625rem;
-  --text-display: clamp(2.5rem, 3.8vw + 1rem, 3.375rem);
+  /* ---- Type scale, fluid ---------------------------------------------
+     Every step scales with the viewport, so the column fills the screen and
+     the line length stays sane at the same time. Because the sizes are tied
+     to vw rather than fixed pixels, browser zoom re-flows instead of just
+     magnifying: the layout fills the monitor at any zoom level. */
+  --text-2xs:  clamp(0.75rem,   0.70rem + 0.10vw, 0.95rem);
+  --text-xs:   clamp(0.875rem,  0.80rem + 0.16vw, 1.10rem);
+  --text-sm:   clamp(1rem,      0.90rem + 0.24vw, 1.30rem);
+  --text-base: clamp(1.1875rem, 0.95rem + 0.62vw, 1.85rem);
+  --text-md:   clamp(1.375rem,  1.10rem + 0.72vw, 2.15rem);
+  --text-lg:   clamp(1.6875rem, 1.35rem + 0.88vw, 2.60rem);
+  --text-xl:   clamp(2.125rem,  1.65rem + 1.25vw, 3.40rem);
+  --text-2xl:  clamp(2.625rem,  2.00rem + 1.60vw, 4.20rem);
+  --text-display: clamp(2.5rem, 1.80rem + 2.20vw, 5.25rem);
 
   /* ---- Colour · Studio ----------------------------------------------
      Light paper with a faint green cast so the neutrals agree with the
@@ -78,6 +81,6 @@
   --z-tooltip:  600;
 
   /* ---- Measure -------------------------------------------------------- */
-  --measure: 65ch;
+  --measure: 100%;
   --rail-w:  11rem;
 }
