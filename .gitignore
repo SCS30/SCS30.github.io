@@ -1,0 +1,4 @@
+# Local working notes and tooling, not part of the published site
+.hallmark/
+NOTES.local.md
+assets/NOTES.local.txt

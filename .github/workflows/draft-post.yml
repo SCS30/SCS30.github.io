@@ -1,0 +1,57 @@
+name: Draft next post
+
+# Drafts the next topic from posts/queue.md and opens a pull request.
+# Nothing publishes automatically: the post lands with "draft": true, so even
+# after you merge you still have to flip that flag to put it on the site.
+
+on:
+  schedule:
+    - cron: "0 8 1 * *"      # 08:00 UTC on the 1st of each month
+  workflow_dispatch:          # or run it on demand from the Actions tab
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  draft:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install --quiet "anthropic>=0.40"
+
+      - id: draft
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python .github/scripts/draft_post.py
+
+      - name: Open pull request
+        if: steps.draft.outputs.drafted == 'true'
+        uses: peter-evans/create-pull-request@v7
+        with:
+          branch: draft/${{ steps.draft.outputs.filename }}
+          commit-message: "Draft: ${{ steps.draft.outputs.title }}"
+          title: "Draft: ${{ steps.draft.outputs.title }}"
+          body: |
+            Drafted from the next topic in `posts/queue.md`.
+
+            **Before merging, read it.** Check that:
+
+            - it sounds like you, not like a model imitating you
+            - every factual claim is one you would defend to a partner
+            - every link resolves, and no source is quoted beyond a sentence
+            - nothing confidential from Durham, York, AstraZeneca, GSK, UBC or Victoria has crept in
+            - no live dispute involving a firm you have applied to is discussed
+
+            Merging does **not** publish it. The entry is in `posts/index.json` with
+            `"draft": true` — set that to `false` in a follow-up commit when you are ready.
+
+            Edit freely on this branch. If it is not worth saving, close the PR and
+            untick the topic in `posts/queue.md` to try again next month.
+          labels: draft-post
+          delete-branch: true

@@ -1,646 +1,429 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Stuart C. Smith — Chemist & Patent Attorney Aspirant</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Mono:wght@300;400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet"/>
-  <style>
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    :root{
-      --ink:#090909;
-      --dim:#111114;
-      --card:#161619;
-      --paper:#f0ede8;
-      --muted:#6e6b64;
-      --gold:#c8a84b;
-      --gold-lt:#e0c87a;
-      --teal:#3d8b7a;
-      --teal-lt:#70b8a8;
-      --line:rgba(200,168,75,0.18);
-      --line-soft:rgba(240,237,232,0.07);
-      --ease:cubic-bezier(.4,0,.2,1);
-      --r:3px;
-    }
-    html{scroll-behavior:smooth}
-    body{font-family:'Jost',sans-serif;font-weight:300;background:var(--ink);color:var(--paper);overflow-x:hidden;cursor:none}
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Stuart Cameron Smith, chemist training for patent practice</title>
+<meta name="description" content="Postdoctoral chemist at Durham University working on catalysis, reaction mechanism and data-driven methodology. Publications, teaching record and contact details. Applying for trainee patent attorney positions for 2027 entry.">
+<meta name="author" content="Stuart Cameron Smith">
+<link rel="canonical" href="https://scs30.github.io/">
 
-    #cur{position:fixed;width:8px;height:8px;background:var(--gold);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);mix-blend-mode:screen;transition:width .25s,height .25s}
-    #cur-r{position:fixed;width:32px;height:32px;border:1px solid rgba(200,168,75,.4);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .3s,height .3s}
+<meta property="og:type" content="profile">
+<meta property="og:title" content="Stuart Cameron Smith, chemist training for patent practice">
+<meta property="og:description" content="Catalysis, reaction mechanism and data-driven methodology at Durham University. Publications, teaching and contact.">
+<meta property="og:url" content="https://scs30.github.io/">
+<meta property="og:image" content="https://scs30.github.io/assets/stuart-smith.jpg">
 
-    #bg{position:fixed;inset:0;z-index:0;opacity:.15;pointer-events:none}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="site.css">
 
-    nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:1.6rem 3.5rem;transition:padding .4s var(--ease),background .4s}
-    nav.s{padding:1rem 3.5rem;background:rgba(9,9,9,.92);backdrop-filter:blur(8px)}
-    .logo{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:300;letter-spacing:.14em;color:var(--paper);text-decoration:none}
-    .logo b{color:var(--gold);font-weight:400}
-    .nav-ul{display:flex;gap:2.8rem;list-style:none}
-    .nav-ul a{font-family:'DM Mono',monospace;font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .3s;position:relative}
-    .nav-ul a::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1px;background:var(--gold);transition:width .3s var(--ease)}
-    .nav-ul a:hover{color:var(--gold-lt)}
-    .nav-ul a:hover::after,.nav-ul a.active::after{width:100%}
-    .nav-ul a.active{color:var(--gold)}
-
-    .wrap{width:100%;max-width:1240px;margin:0 auto;padding:0 3.5rem}
-    section{position:relative;z-index:1}
-
-    .lbl{font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:.9rem;margin-bottom:.9rem}
-    .lbl::before{content:'';display:block;width:1.8rem;height:1px;background:var(--gold)}
-    h2.sec{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3rem);font-weight:300;line-height:1.1;color:var(--paper)}
-    h2.sec em{font-style:italic;color:var(--gold-lt)}
-
-    .reveal{opacity:0;transform:translateY(26px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
-    .reveal.on{opacity:1;transform:none}
-
-    /* HERO */
-    #hero{min-height:100vh;display:flex;align-items:center;padding:7rem 0 4rem}
-    .hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;width:100%;max-width:1240px;margin:0 auto;padding:0 3.5rem}
-    .eyebrow{font-family:'DM Mono',monospace;font-size:.65rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:1.6rem;opacity:0;animation:up .8s var(--ease) .1s forwards}
-    h1{font-family:'Cormorant Garamond',serif;font-size:clamp(3.2rem,6.5vw,5.6rem);font-weight:300;line-height:1.03;color:var(--paper);margin-bottom:1rem;opacity:0;animation:up .8s var(--ease) .3s forwards}
-    h1 em{font-style:italic;color:var(--gold-lt)}
-    .hero-sub{font-size:clamp(.95rem,1.5vw,1.1rem);font-weight:300;color:var(--muted);line-height:1.8;margin-bottom:2rem;max-width:500px;opacity:0;animation:up .8s var(--ease) .5s forwards}
-    .chips{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:2.8rem;opacity:0;animation:up .8s var(--ease) .65s forwards}
-    .chip{font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.1em;padding:.3rem .75rem;border:1px solid var(--line);border-radius:2px;color:var(--muted);transition:border-color .3s,color .3s}
-    .chip:hover{border-color:var(--gold);color:var(--gold-lt)}
-    .hero-btns{display:flex;gap:1rem;opacity:0;animation:up .8s var(--ease) .8s forwards}
-    .btn{font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;padding:.85rem 1.8rem;border-radius:var(--r);transition:all .3s var(--ease);cursor:pointer;border:none}
-    .btn-g{background:var(--gold);color:var(--ink)}
-    .btn-g:hover{background:var(--gold-lt);transform:translateY(-2px);box-shadow:0 8px 28px rgba(200,168,75,.28)}
-    .btn-o{background:transparent;color:var(--paper);border:1px solid rgba(240,237,232,.15)}
-    .btn-o:hover{border-color:var(--gold);color:var(--gold-lt);transform:translateY(-2px)}
-    .mol-wrap{display:flex;justify-content:center;align-items:center;opacity:0;animation:fade 1.2s var(--ease) .4s forwards}
-    .mol-svg{width:100%;max-width:400px;filter:drop-shadow(0 0 48px rgba(200,168,75,.1))}
-
-    /* ABOUT */
-    #about{padding:9rem 0;background:linear-gradient(180deg,var(--ink),var(--dim))}
-    .about-grid{display:grid;grid-template-columns:1fr 1.3fr;gap:5rem;align-items:start}
-    .about-body{margin-top:2rem}
-    .about-body p{color:var(--muted);line-height:1.9;font-size:.95rem}
-    .about-body p+p{margin-top:1.1rem}
-    .pillars{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line);margin-top:2.8rem}
-    .pill{padding:1.3rem;border-right:1px solid var(--line);border-bottom:1px solid var(--line);transition:background .3s}
-    .pill:hover{background:rgba(200,168,75,.04)}
-    .pill-ico{font-size:1.1rem;margin-bottom:.35rem}
-    .pill-lbl{font-family:'DM Mono',monospace;font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:.3rem}
-    .pill p{font-size:.78rem;color:var(--muted);line-height:1.65;margin:0!important}
-    .stats{border-left:1px solid var(--line);margin-bottom:3rem}
-    .stat{padding:1.4rem 2rem;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:baseline;transition:background .3s}
-    .stat:hover{background:rgba(200,168,75,.04)}
-    .stat-n{font-family:'Cormorant Garamond',serif;font-size:2.4rem;font-weight:300;color:var(--gold)}
-    .stat-l{font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);text-align:right;max-width:160px;line-height:1.6}
-    .sk-head{font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem}
-    .sk-bars{display:flex;flex-direction:column;gap:.85rem}
-    .sk-row{display:flex;align-items:center;gap:1rem}
-    .sk-nm{font-family:'DM Mono',monospace;font-size:.65rem;color:var(--muted);width:148px;flex-shrink:0;letter-spacing:.04em}
-    .sk-tr{flex:1;height:2px;background:rgba(240,237,232,.07)}
-    .sk-f{height:100%;background:linear-gradient(90deg,var(--teal),var(--gold));transform:scaleX(0);transform-origin:left;transition:transform 1.2s var(--ease)}
-
-    /* EXPERIENCE */
-    #experience{padding:9rem 0;background:var(--ink)}
-    .exp-list{margin-top:3.5rem;display:flex;flex-direction:column}
-    .exp-item{display:grid;grid-template-columns:220px 1fr;gap:2.5rem;padding:2.5rem 0;border-bottom:1px solid var(--line-soft);position:relative;padding-left:2rem;transition:background .3s}
-    .exp-item::before{content:'';position:absolute;left:0;top:0;bottom:0;width:1px;background:var(--line)}
-    .exp-item:hover{background:rgba(200,168,75,.02)}
-    .exp-period{font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.12em;color:var(--gold);margin-bottom:.4rem;line-height:1.6}
-    .exp-org{font-family:'DM Mono',monospace;font-size:.58rem;letter-spacing:.1em;color:var(--teal-lt);text-transform:uppercase}
-    .exp-role{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:400;color:var(--paper);margin-bottom:.5rem;line-height:1.3}
-    .exp-project{font-size:.8rem;color:var(--gold-lt);font-style:italic;margin-bottom:.8rem}
-    .exp-bullets{list-style:none;display:flex;flex-direction:column;gap:.4rem}
-    .exp-bullets li{font-size:.82rem;color:var(--muted);line-height:1.7;padding-left:1rem;position:relative}
-    .exp-bullets li::before{content:'—';position:absolute;left:0;color:var(--gold);opacity:.5}
-
-    /* PUBLICATIONS */
-    #pubs{padding:9rem 0;background:var(--dim)}
-    .pub-list{margin-top:3.5rem;display:flex;flex-direction:column}
-    .pub-item{padding:2rem 0;border-bottom:1px solid var(--line-soft);display:grid;grid-template-columns:80px 1fr;gap:2rem;align-items:start;transition:background .3s}
-    .pub-item:hover{background:rgba(200,168,75,.025)}
-    .pub-year{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:300;color:rgba(200,168,75,.4);line-height:1}
-    .pub-journal{font-family:'DM Mono',monospace;font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;color:var(--teal-lt);margin-bottom:.35rem}
-    .pub-title{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:400;color:var(--paper);line-height:1.45;margin-bottom:.35rem}
-    .pub-authors{font-size:.77rem;color:var(--muted);line-height:1.6}
-    .pub-authors strong{color:var(--gold-lt)}
-    .pub-badge{display:inline-block;margin-top:.5rem;font-family:'DM Mono',monospace;font-size:.55rem;letter-spacing:.1em;padding:.2rem .55rem;border:1px solid;border-radius:2px}
-    .pub-badge.pub{color:var(--teal-lt);border-color:rgba(61,139,122,.3)}
-    .pub-badge.prep{color:rgba(200,168,75,.7);border-color:rgba(200,168,75,.2)}
-    .pub-badge.press{color:var(--muted);border-color:rgba(110,107,100,.3)}
-
-    /* AWARDS */
-    #awards{padding:9rem 0;background:var(--ink)}
-    .awards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:3.5rem}
-    .award-card{background:var(--card);padding:2.2rem;position:relative;overflow:hidden;transition:background .4s,transform .4s}
-    .award-card::before{content:'';position:absolute;top:0;left:0;width:2px;height:0;background:var(--gold);transition:height .4s var(--ease)}
-    .award-card:hover::before{height:100%}
-    .award-card:hover{background:#1c1c20;transform:translateY(-2px)}
-    .award-ico{font-size:1.6rem;margin-bottom:.9rem}
-    .award-title{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:400;color:var(--paper);margin-bottom:.4rem;line-height:1.3}
-    .award-body{font-size:.8rem;color:var(--muted);line-height:1.7}
-
-    /* CONTACT */
-    #contact{padding:9rem 0;background:var(--dim)}
-    .contact-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:5rem;align-items:start}
-    .contact-lede{color:var(--muted);line-height:1.85;margin-top:1.5rem;font-size:.93rem}
-    .clinks{margin-top:2.5rem;display:flex;flex-direction:column}
-    .clink{display:flex;align-items:center;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--line);text-decoration:none;color:var(--muted);font-size:.83rem;transition:color .3s,padding-left .3s}
-    .clink:hover{color:var(--gold-lt);padding-left:.5rem}
-    .clink-ico{width:1.4rem;text-align:center;font-size:.95rem}
-    .clink-tag{font-family:'DM Mono',monospace;font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--teal-lt);margin-left:auto}
-    .cform{display:flex;flex-direction:column;gap:1.1rem}
-    .frow{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem}
-    .fg{display:flex;flex-direction:column;gap:.35rem}
-    .fl{font-family:'DM Mono',monospace;font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
-    .fc{background:rgba(240,237,232,.03);border:1px solid var(--line);border-radius:var(--r);padding:.8rem .95rem;color:var(--paper);font-family:'Jost',sans-serif;font-size:.88rem;font-weight:300;outline:none;resize:none;transition:border-color .3s,background .3s}
-    .fc:focus{border-color:rgba(200,168,75,.5);background:rgba(200,168,75,.025)}
-    .fc::placeholder{color:rgba(110,107,100,.45)}
-    #fstatus{font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.08em;padding:.75rem 1rem;border-radius:var(--r);display:none}
-    #fstatus.ok{display:block;color:var(--teal-lt);border:1px solid rgba(61,139,122,.3);background:rgba(61,139,122,.07)}
-    #fstatus.err{display:block;color:#e08080;border:1px solid rgba(224,128,128,.3);background:rgba(224,128,128,.07)}
-
-    footer{position:relative;z-index:1;border-top:1px solid var(--line);padding:2rem 3.5rem;display:flex;justify-content:space-between;align-items:center;background:var(--ink)}
-    .fc-copy{font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.1em;color:var(--muted)}
-    .fc-copy span{color:var(--gold)}
-    .fc-qt{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.88rem;color:var(--muted)}
-
-    @keyframes up{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
-    @keyframes fade{from{opacity:0}to{opacity:1}}
-
-    @media(max-width:960px){
-      nav{padding:1.2rem 1.5rem}nav.s{padding:.9rem 1.5rem}
-      .hero-grid{grid-template-columns:1fr;padding:0 1.5rem}.mol-wrap{display:none}
-      .wrap{padding:0 1.5rem}
-      .about-grid,.contact-grid{grid-template-columns:1fr;gap:3rem}
-      .awards-grid{grid-template-columns:1fr 1fr}
-      .exp-item{grid-template-columns:1fr;gap:.6rem}
-      .frow{grid-template-columns:1fr}
-      .pillars{grid-template-columns:1fr}
-    }
-    @media(max-width:600px){
-      .nav-ul{display:none}
-      .awards-grid{grid-template-columns:1fr}
-      footer{flex-direction:column;gap:.6rem;text-align:center}
-      .pub-item{grid-template-columns:1fr}.pub-year{display:none}
-    }
-  </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Stuart Cameron Smith",
+  "givenName": "Stuart",
+  "familyName": "Smith",
+  "jobTitle": "Postdoctoral Research Associate",
+  "email": "mailto:stuartcsmith30@outlook.com",
+  "identifier": "https://orcid.org/0000-0001-7149-0463",
+  "url": "https://scs30.github.io/",
+  "image": "https://scs30.github.io/assets/stuart-smith.jpg",
+  "affiliation": { "@type": "Organization", "name": "Durham University" },
+  "alumniOf": [
+    { "@type": "Organization", "name": "University of York" },
+    { "@type": "Organization", "name": "University of Glasgow" }
+  ],
+  "sameAs": [
+    "https://orcid.org/0000-0001-7149-0463",
+    "https://www.linkedin.com/in/stuartcsmith"
+  ]
+}
+</script>
 </head>
 <body>
 
-<div id="cur"></div>
-<div id="cur-r"></div>
-<canvas id="bg"></canvas>
+<a class="skip" href="#opening">Skip to content</a>
 
-<nav id="nav">
-  <a href="#hero" class="logo">Stuart C<b>.</b> Smith</a>
-  <ul class="nav-ul">
-    <li><a href="#about">About</a></li>
-    <li><a href="#experience">Experience</a></li>
-    <li><a href="#pubs">Publications</a></li>
-    <li><a href="#awards">Awards</a></li>
-    <li><a href="#contact">Contact</a></li>
+<!-- Side-rail (desktop) -->
+<nav class="rail" aria-label="Sections">
+  <a class="rail__mark" href="#opening">Stuart&nbsp;C.&nbsp;Smith</a>
+  <ul class="rail__list">
+    <li><a class="rail__link" href="#opening"      aria-label="Opening"><span class="rail__dot" aria-hidden="true"></span><span class="rail__label" aria-hidden="true">Opening</span></a></li>
+    <li><a class="rail__link" href="#publications" aria-label="Publications"><span class="rail__dot" aria-hidden="true"></span><span class="rail__label" aria-hidden="true">Publications</span></a></li>
+    <li><a class="rail__link" href="#research"     aria-label="Research"><span class="rail__dot" aria-hidden="true"></span><span class="rail__label" aria-hidden="true">Research</span></a></li>
+    <li><a class="rail__link" href="#teaching"     aria-label="Teaching"><span class="rail__dot" aria-hidden="true"></span><span class="rail__label" aria-hidden="true">Teaching</span></a></li>
+    <li><a class="rail__link" href="#writing"      aria-label="Writing"><span class="rail__dot" aria-hidden="true"></span><span class="rail__label" aria-hidden="true">Writing</span></a></li>
+    <li><a class="rail__link" href="#record"       aria-label="Record"><span class="rail__dot" aria-hidden="true"></span><span class="rail__label" aria-hidden="true">Record</span></a></li>
+    <li><a class="rail__link" href="#contact"      aria-label="Contact"><span class="rail__dot" aria-hidden="true"></span><span class="rail__label" aria-hidden="true">Contact</span></a></li>
   </ul>
 </nav>
 
-<!-- HERO -->
-<section id="hero">
-  <div class="hero-grid">
+<!-- Rail fallback below 60rem -->
+<div class="topbar">
+  <a class="topbar__mark" href="#opening">Stuart&nbsp;C.&nbsp;Smith</a>
+  <a class="topbar__link label" href="#contact">Contact</a>
+</div>
+
+<main class="doc">
+
+<!-- ============================ OPENING ============================ -->
+<section class="sec sec--open" id="opening">
+  <div class="open__head">
+    <div class="open__id">
+      <h1>Stuart Cameron Smith</h1>
+      <p class="open__creds">PhD · MSci · MRSC · AFHEA. Durham University</p>
+    </div>
+    <img class="portrait" src="assets/stuart-smith.jpg" alt="Stuart Cameron Smith" width="400" height="400" fetchpriority="high">
+  </div>
+
+  <div class="prose open__lede">
+    <p class="lede">I develop catalytic reactions and work out why they behave the way they do, at the bench and with high-throughput screening, DFT and machine learning when the bench is too slow.</p>
+  </div>
+
+  <div class="seeking">
+    <span class="seeking__label label">Currently applying</span>
+    <p>Trainee patent attorney positions and graduate schemes for 2027 entry, in chemistry and life-sciences practice groups. Referees and a writing sample on request.</p>
+  </div>
+
+  <div class="actions">
+    <a class="btn btn--primary" href="assets/Stuart_Smith_CV.docx" download>Download CV</a>
+    <a class="btn" href="#contact">Get in touch</a>
+  </div>
+
+  <div class="prose open__body">
+    <p>I am a postdoctoral chemist in the Franchino group at Durham University, working on gold catalysis and data-driven stereoselective methodology. Before Durham I read for a PhD at York on Csp²–Csp³ Suzuki–Miyaura cross-coupling, supervised by Ian Fairlamb and Peter O’Brien, with an industrial CASE placement at AstraZeneca.</p>
+    <p>Patent law found me through that industrial work. Sitting in project meetings at GSK and AstraZeneca where patentability and freedom-to-operate quietly decided which chemistry we pursued, I found I was more interested in those questions than in the synthesis they governed. I have since taken the World Intellectual Property Organization’s certifications in IP fundamentals (DL-101), patent law (DL-170) and advanced patents (DL-177), and trained as a peer reviewer with the American Chemical Society.</p>
+    <p>The habits the profession runs on, reading a document precisely, writing so that a claim means one thing and not another, and getting up to speed on unfamiliar technology quickly, are the ones a laboratory has been teaching me since 2016.</p>
+  </div>
+</section>
+
+<!-- ========================== PUBLICATIONS ========================== -->
+<section class="sec" id="publications">
+  <div class="sec__head">
+    <h2>Publications</h2>
+    <p class="sec__note">Peer-reviewed output, linked to the version of record. Figures are reproduced from the open-access papers under their Creative Commons licences, credited beneath each one.</p>
+  </div>
+
+  <ol class="pubs">
+
+    <li class="pub">
+      <h3 class="pub__title">Automated approaches, reaction parameterisation, and data science in organometallic chemistry and catalysis: towards improving synthetic chemistry and accelerating mechanistic understanding</h3>
+      <p class="pub__authors"><span class="me">S. C. Smith</span>, C. S. Horbaczewskyj, T. F. N. Tanner, J. J. Walder, I. J. S. Fairlamb</p>
+      <p class="pub__cite">Digital Discovery, 2024, 3, 1467–1495</p>
+      <div class="pub__meta">
+        <span class="tag">First author</span>
+        <span class="tag">Review</span>
+        <span class="tag tag--oa">Open access</span>
+        <a class="lnk" href="https://doi.org/10.1039/D3DD00249G" rel="noopener">10.1039/D3DD00249G</a>
+      </div>
+      <figure class="pub__fig">
+        <img src="assets/abstracts/digital-discovery-2024.jpg" alt="Timeline titled History of Automation, marking automated peptide synthesis in 1966, automated kinetics in 1970, closed-loop optimisation in 1978, high-throughput experimentation in pharmaceuticals in 1986, its first use for catalyst screening in 1996, and bespoke reaction-specific designs from the 2000s onward." width="1894" height="1066" loading="lazy">
+        <figcaption class="pub__credit">Figure reproduced from Smith <em>et al.</em>, Digital Discovery, 2024, 3, 1467, under <a href="https://creativecommons.org/licenses/by/3.0/" rel="noopener license">CC BY 3.0</a>.</figcaption>
+      </figure>
+    </li>
+
+    <li class="pub">
+      <h3 class="pub__title">Data-Led Suzuki-Miyaura Reaction Optimization: Development of a Short Course for Postgraduate Synthetic Chemists</h3>
+      <p class="pub__authors"><span class="me">S. C. Smith</span>, B. A. Franklin, C. S. Horbaczewskyj, J. D. D’Souza Metcalf, J. J. Walder, P. O’Brien, I. J. S. Fairlamb</p>
+      <p class="pub__cite">Journal of Chemical Education, 2025, 102, 697–703</p>
+      <div class="pub__meta">
+        <span class="tag">First author</span>
+        <span class="tag tag--oa">Open access</span>
+        <a class="lnk" href="https://doi.org/10.1021/acs.jchemed.4c01194" rel="noopener">10.1021/acs.jchemed.4c01194</a>
+      </div>
+      <figure class="pub__fig">
+        <img src="assets/abstracts/jchemed-2025.jpg" alt="Five-stage cycle: generate an experimental design to interrogate reaction space, explore that space in automated fashion, record data by HPLC, GC or MS, generate predictive models from the measured responses, then validate the predictions experimentally and update the hypothesis." width="576" height="593" loading="lazy">
+        <figcaption class="pub__credit">Figure reproduced from Smith <em>et al.</em>, J. Chem. Educ., 2025, 102, 697, under <a href="https://creativecommons.org/licenses/by/4.0/" rel="noopener license">CC BY 4.0</a>.</figcaption>
+      </figure>
+    </li>
+
+    <li class="pub">
+      <h3 class="pub__title">Practical atmospheric photochemical kinetics for undergraduate teaching and research</h3>
+      <p class="pub__authors">J. D’Souza Metcalf, R. K. Winkless, A. Robinson, <span class="me">S. C. Smith</span>, A. R. Rickard, T. J. Dillon</p>
+      <p class="pub__cite">RSC Sustainability, 2025, 3, 5146–5154</p>
+      <div class="pub__meta">
+        <span class="tag">Co-author</span>
+        <span class="tag tag--oa">Open access</span>
+        <a class="lnk" href="https://doi.org/10.1039/D5SU00681C" rel="noopener">10.1039/D5SU00681C</a>
+      </div>
+      <figure class="pub__fig">
+        <img src="assets/abstracts/rsc-sustainability-2025.jpg" alt="Absorption cross-section plotted against wavelength from 225 to 325 nanometres for a carbonyl compound in cyclohexane, n-hexane, diethyl ether, methanol and water, compared with the gas-phase spectrum." width="1361" height="988" loading="lazy">
+        <figcaption class="pub__credit">Figure reproduced from D’Souza Metcalf <em>et al.</em>, RSC Sustainability, 2025, 3, 5146, under <a href="https://creativecommons.org/licenses/by/3.0/" rel="noopener license">CC BY 3.0</a>.</figcaption>
+      </figure>
+    </li>
+
+    <li class="pub">
+      <h3 class="pub__title">Redox-Active Palladium Ligands</h3>
+      <p class="pub__authors">Co-authored chapter in <em>The Chemistry of Organopalladium Compounds</em>, Patai’s Chemistry of Functional Groups (Wiley)</p>
+      <p class="pub__cite">In press</p>
+      <div class="pub__meta">
+        <span class="tag">Book chapter</span>
+        <span class="tag">In press</span>
+      </div>
+    </li>
+
+  </ol>
+
+  <p class="pending">Three further first-author manuscripts from my PhD are in advanced preparation, on pre-transmetalation intermediates, on the synthetic development and mechanism of Csp²–Csp³ Suzuki–Miyaura cross-couplings, and on the synthesis and applications of highly fluorinated alkylphosphines in catalysis. From the postdoc, a first-author manuscript on multivariate regression and machine-learning classification of gold-catalysed cyclisations is in preparation, with a second on <em>exo</em> and <em>endo</em> selectivity in the gold-catalysed cyclisation of 1,6-enynes at an advanced stage. Drafts available on request.</p>
+</section>
+
+<!-- ============================ RESEARCH ============================ -->
+<section class="sec" id="research">
+  <div class="sec__head">
+    <h2>Research</h2>
+    <p class="sec__note">Positions held, most recent first.</p>
+  </div>
+
+  <ul class="orgs" aria-label="Institutions where I have studied or worked">
+    <li><img src="assets/logos/durham.png" width="219" height="256"      alt="Durham University" loading="lazy"></li>
+    <li><img src="assets/logos/york.png" width="160" height="256"        alt="University of York" loading="lazy"></li>
+    <li><img src="assets/logos/glasgow.png" width="196" height="256"     alt="University of Glasgow" loading="lazy"></li>
+    <li><img class="orgs__wordmark" src="assets/logos/ubc.svg"      alt="University of British Columbia" loading="lazy"></li>
+    <li><img class="orgs__wordmark" src="assets/logos/victoria.png" alt="University of Victoria" width="640" height="234" loading="lazy"></li>
+    <li><img class="orgs__wordmark orgs__wordmark--xw" src="assets/logos/astrazeneca.svg" alt="AstraZeneca" loading="lazy"></li>
+    <li><img class="orgs__wordmark" src="assets/logos/gsk.png"      alt="GSK" width="640" height="193" loading="lazy"></li>
+  </ul>
+
+  <ol class="entries">
+
+    <li class="entry">
+      <p class="entry__when">Jun 2025 to present</p>
+      <h3 class="entry__role">Postdoctoral Research Associate, Franchino Group</h3>
+      <p class="entry__where">Durham University · supervised by Dr Allegra Franchino and Dr Jolene Reid</p>
+      <p class="entry__body"><em>Chlorocat: unlocking metal–chloride bonds for data-driven stereoselective catalysis.</em> I design and run gold-catalysed reaction development using high-throughput and automated methods, and build the computational and machine-learning pipelines that classify catalytic mechanism and predict reactivity from chemical descriptors. I designed, developed and co-led delivery of the department’s high-throughput synthetic screening platform, and opened new collaborations with Professors Justin Perry and Matt Unthank at Northumbria University. I supervise undergraduate and postgraduate researchers and contribute to grant applications.</p>
+    </li>
+
+    <li class="entry">
+      <p class="entry__when">May to Jun 2026</p>
+      <h3 class="entry__role">Visiting Postdoctoral Researcher, Reid Group</h3>
+      <p class="entry__where">University of British Columbia, Canada · funded by an RSC International Collaboration Grant</p>
+      <p class="entry__body">Developed multivariate regression and machine-learning descriptor methods to classify mechanism in gold-catalysed systems, and produced the structured datasets and manuscript drafts arising from the collaboration.</p>
+    </li>
+
+    <li class="entry">
+      <p class="entry__when">Feb to May 2025</p>
+      <h3 class="entry__role">Visiting Postdoctoral Researcher, McIndoe Group</h3>
+      <p class="entry__where">University of Victoria, Canada · supervised by Prof. Scott McIndoe</p>
+      <p class="entry__body"><em>In-situ catalytic reaction monitoring using sulfonated ligands as handles for mass spectrometry.</em> Built real-time electrospray ionisation mass spectrometry workflows that give mechanistic information conventional methods cannot reach.</p>
+    </li>
+
+    <li class="entry">
+      <p class="entry__when">Nov 2024 to Jan 2025</p>
+      <h3 class="entry__role">Freelance Consultant, AI for chemistry</h3>
+      <p class="entry__where">Outlier AI</p>
+      <p class="entry__body">Trained and evaluated generative models for chemical applications, curated and annotated the datasets those workflows ran on, and assessed model output for chemical validity and practical usability.</p>
+    </li>
+
+    <li class="entry">
+      <p class="entry__when">Oct 2023 to Feb 2024</p>
+      <h3 class="entry__role">Postgraduate CASE Researcher, Early Chemical Development</h3>
+      <p class="entry__where">AstraZeneca · supervised by Mr Andrew Turner</p>
+      <p class="entry__body"><em>High-throughput reaction development for Csp²–Csp³ Suzuki–Miyaura cross-couplings of oxocyclic boronates.</em> Designed and ran Design-of-Experiments screening campaigns, including parallelised high-pressure hydrogenation and flow lithiation, to build statistically rigorous models of the relevant chemical space. This is where I first sat in on patentability discussions, and where the shift towards IP started.</p>
+    </li>
+
+    <li class="entry">
+      <p class="entry__when">Jun 2019 to Jul 2020</p>
+      <h3 class="entry__role">Undergraduate CASE Researcher, Process Development</h3>
+      <p class="entry__where">GSK · supervised by Dr Stephen Street-Howard and Dr Andrew Jamieson</p>
+      <p class="entry__body"><em>Process-scale implementation of a novel integrase strand transfer inhibitor.</em> Supported process-scale synthetic development, and took part in discussions on how the chemistry would be protected and commercialised.</p>
+    </li>
+
+    <li class="entry">
+      <p class="entry__when">Apr 2017 to Aug 2021</p>
+      <h3 class="entry__role">Undergraduate Researcher</h3>
+      <p class="entry__where">University of Glasgow and industrial partners</p>
+      <p class="entry__body">Four competitive research placements of three and a half months each, spanning automated synthesis, total synthesis, catalytic methodology, computational chemistry, mathematical modelling and molecular genetics, including a product-development collaboration with DeepMatter.</p>
+    </li>
+
+  </ol>
+
+  <div class="places">
+    <figure class="place">
+      <img src="assets/places/durham.jpg" alt="Durham Cathedral seen from across the River Wear, with the old fulling mill on the bank below it." width="1500" height="1000" loading="lazy">
+      <figcaption class="place__cap">Durham, where I work now. The cathedral and castle sit on the peninsula above the Wear; the Department of Chemistry is on the science site up the hill.</figcaption>
+    </figure>
+    <figure class="place">
+      <img src="assets/places/glasgow.jpg" alt="The Gilbert Scott Building at the University of Glasgow, floodlit at dusk, its tower and spire above the trees of Kelvingrove." width="1500" height="1000" loading="lazy">
+      <figcaption class="place__cap">Glasgow, where I started. Five years of an MSci and four research placements in the Gilbert Scott Building and the labs behind it. <span class="place__credit">Photograph by Diliff, <a href="https://creativecommons.org/licenses/by/3.0/" rel="noopener license">CC BY 3.0</a>.</span></figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ============================ TEACHING ============================ -->
+<section class="sec" id="teaching">
+  <div class="sec__head">
+    <h2>Teaching</h2>
+  </div>
+
+  <div class="prose">
+    <p>I am an Associate Fellow of the Higher Education Academy. Teaching has not been a sideline of the research: two of my peer-reviewed papers came directly out of courses I designed and ran, which is the part of the record I am most pleased with.</p>
+  </div>
+
+  <ul class="plainlist">
+    <li>Tutorial Fellow, Durham University, in organic chemistry and catalysis.</li>
+    <li>Graduate Teaching and Marking Assistant, University of York.</li>
+    <li>Designed and delivered a postgraduate short course on Design-of-Experiments and automation-enabled reaction optimisation, published in the <em>Journal of Chemical Education</em>.</li>
+    <li>Developed advanced workshops on statistical methods and automation-enabled reaction optimisation for PhD and MSc researchers, with a focus on practical adoption and reproducibility.</li>
+    <li>Laboratory mentor to five MChem, one BSc and three PhD researchers, and organiser of synthesis and retrosynthesis training sessions for postgraduates at York.</li>
+    <li>President, Postgraduate Chemistry Society, University of York, 2022 to 2024. Elected and appointed roles on the Graduate School Board and on equality, diversity and inclusion committees, 2021 to 2024.</li>
+    <li>I take a small number of GCSE and A-level chemistry students each year. Enhanced DBS certified.</li>
+  </ul>
+</section>
+
+<!-- ============================= WRITING ============================= -->
+<section class="sec" id="writing">
+  <div class="sec__head">
+    <h2>Writing</h2>
+    <p class="sec__note">Commissioned pieces for the Royal Society of Chemistry, and shorter notes of my own on chemistry, pharmaceutical development and patent practice.</p>
+  </div>
+
+  <ul class="posts" id="posts">
+    <li class="post" data-date="2026-05-14">
+      <p class="post__when">14 May 2026</p>
+      <h3 class="post__title"><a class="lnk" href="https://www.chemistryworld.com/opinion/the-current-academic-system-doesnt-incentivise-risk-taking/4023230.article" rel="noopener">The current academic system doesn’t incentivise risk-taking</a></h3>
+      <p class="post__dek">But playing it safe can have negative consequences for a field.</p>
+      <p class="post__where label">Chemistry World · RSC</p>
+    </li>
+  </ul>
+</section>
+
+<!-- ============================== RECORD ============================== -->
+<section class="sec sec--record" id="record">
+  <div class="sec__head">
+    <h2>Record</h2>
+  </div>
+
+  <div class="tablewrap">
+    <table class="rec">
+      <caption class="label">Education</caption>
+      <tbody>
+        <tr>
+          <th scope="row">PhD in Chemistry, University of York</th>
+          <td>Synthetic development and mechanistic understanding of Csp²–Csp³ Suzuki–Miyaura cross-couplings. Fairlamb and O’Brien groups</td>
+          <td>2021–2025</td>
+        </tr>
+        <tr>
+          <th scope="row">MSci Chemistry with Medicinal Chemistry, University of Glasgow</th>
+          <td>First Class. Automated synthesis platforms for medicinal lead–target library generation. Cronin group</td>
+          <td>2016–2021</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="tablewrap tablewrap--gap">
+    <table class="rec">
+      <caption class="label">Awards and funding</caption>
+      <tbody>
+        <tr><th scope="row">RSC International Collaboration Grant</th><td>£5,000, competitive national funding for a research visit to Canada</td><td>2026</td></tr>
+        <tr><th scope="row">Vice-Chancellor’s Award for Postgraduate Research</th><td>University of York</td><td>2024</td></tr>
+        <tr><th scope="row">York Learning and Teaching Award</th><td>Excellence in Pedagogical Practice</td><td>2024</td></tr>
+        <tr><th scope="row">Roger J. Mawby Prize for Practical Teaching</th><td>University of York</td><td>2023</td></tr>
+        <tr><th scope="row">Prosper Postdoctoral Career Development Programme</th><td>Durham University, recognising leadership potential and cross-sector impact</td><td>2025</td></tr>
+        <tr><th scope="row">Carnegie Trust Scholar</th><td>£2,000, University of Glasgow</td><td>2017</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="tablewrap tablewrap--gap">
+    <table class="rec">
+      <caption class="label">Professional development</caption>
+      <tbody>
+        <tr><th scope="row">WIPO Academy</th><td>IP Fundamentals (DL-101), Patent Law (DL-170), Advanced Patents (DL-177)</td><td>2025–2026</td></tr>
+        <tr><th scope="row">Exercising Leadership</th><td>Harvard Online</td><td>2026</td></tr>
+        <tr><th scope="row">Peer Reviewer Training</th><td>American Chemical Society</td><td>2026</td></tr>
+        <tr><th scope="row">Forward Business Leadership Program</th><td>McKinsey &amp; Company</td><td>2025</td></tr>
+        <tr><th scope="row">Advanced Organometallics</th><td>The Scripps Research Institute</td><td>2025</td></tr>
+        <tr><th scope="row">PCEP Certified Python Programmer</th><td>Python Institute</td><td>2025</td></tr>
+        <tr><th scope="row">Programming for Artificial Intelligence</th><td>Open University</td><td>2025</td></tr>
+        <tr><th scope="row">Winter School on Computational Chemistry</th><td>CECAM</td><td>2025</td></tr>
+        <tr><th scope="row">Digital Molecular Technologies Summer School</th><td>University of Cambridge</td><td>2024</td></tr>
+        <tr><th scope="row">Reson8 Advanced NMR Training</th><td>University of Leeds</td><td>2024</td></tr>
+        <tr><th scope="row">Mastering Medicinal Chemistry VIII</th><td>Royal Society of Chemistry, Burlington House</td><td>2024</td></tr>
+        <tr><th scope="row">Member of the Royal Society of Chemistry</th><td>MRSC</td><td>2024</td></tr>
+        <tr><th scope="row">Associate Fellow of the Higher Education Academy</th><td>AFHEA</td><td>2023</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="prose prose--gap">
+    <p>More than twenty research presentations at national and international conferences. Highlights include Dalton at the University of Warwick (April 2023), the European Automated Synthesis Forum at Novartis in Basel (November 2023), the AstraZeneca PT&amp;D Review (April 2024), the CheM62 Symposium (June 2024), the Oxford Synthesis Summer Conference (July 2024) and ACS Catalysis for Organic Synthesis in Vienna (August 2024).</p>
+  </div>
+</section>
+
+<!-- ============================= CONTACT ============================= -->
+<section class="sec sec--contact" id="contact">
+  <div class="sec__head">
+    <h2>Contact</h2>
+    <p class="sec__note">Email is quickest. If you are a firm and want a CV, referees or a writing sample, say so and I will send them.</p>
+  </div>
+
+  <div class="contact">
     <div>
-      <div class="eyebrow">PhD · MRSC · AFHEA · Durham University</div>
-      <h1>Stuart C.<br><em>Smith</em></h1>
-      <p class="hero-sub">Postdoctoral researcher in organic chemistry — catalytic reaction development, computational chemistry, and intellectual property. Seeking a trainee patent attorney role in chemistry &amp; pharmaceutical innovation.</p>
-      <div class="chips">
-        <span class="chip">Pd-catalysis</span>
-        <span class="chip">Cross-coupling</span>
-        <span class="chip">Computational Chem</span>
-        <span class="chip">HTE &amp; Automation</span>
-        <span class="chip">Machine Learning</span>
-        <span class="chip">IP Strategy</span>
-        <span class="chip">WIPO Certified</span>
-        <span class="chip">AstraZeneca · GSK</span>
-      </div>
-      <div class="hero-btns">
-        <a href="#pubs" class="btn btn-g">Publications</a>
-        <a href="#contact" class="btn btn-o">Get in Touch</a>
-      </div>
+      <ul class="direct">
+        <li><a href="mailto:stuartcsmith30@outlook.com">stuartcsmith30@outlook.com<span class="direct__tag label">Email</span></a></li>
+        <li><a href="tel:+447783013996">07783 013996<span class="direct__tag label">Phone</span></a></li>
+        <li><a href="https://www.linkedin.com/in/stuartcsmith" rel="noopener">linkedin.com/in/stuartcsmith<span class="direct__tag label">LinkedIn</span></a></li>
+        <li><a href="https://orcid.org/0000-0001-7149-0463" rel="noopener">0000-0001-7149-0463<span class="direct__tag label">ORCID</span></a></li>
+        <li><a href="assets/Stuart_Smith_CV.docx" download>Curriculum vitae<span class="direct__tag label">PDF</span></a></li>
+      </ul>
     </div>
-    <div class="mol-wrap">
-      <svg class="mol-svg" viewBox="0 0 440 440" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <radialGradient id="hg" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stop-color="#c8a84b" stop-opacity=".22"/>
-            <stop offset="100%" stop-color="#c8a84b" stop-opacity="0"/>
-          </radialGradient>
-        </defs>
-        <circle cx="220" cy="220" r="180" fill="none" stroke="rgba(200,168,75,.06)" stroke-width="1" stroke-dasharray="3 9"/>
-        <circle cx="220" cy="220" r="140" fill="none" stroke="rgba(200,168,75,.04)" stroke-width="1"/>
-        <circle cx="220" cy="220" r="90" fill="url(#hg)"/>
-        <text x="220" y="43"  text-anchor="middle" fill="rgba(200,168,75,.28)" font-family="DM Mono,monospace" font-size="8" letter-spacing="2">OXIDATIVE ADDITION</text>
-        <text x="220" y="406" text-anchor="middle" fill="rgba(200,168,75,.28)" font-family="DM Mono,monospace" font-size="8" letter-spacing="2">REDUCTIVE ELIMINATION</text>
-        <line x1="220" y1="220" x2="220" y2="80"  stroke="rgba(200,168,75,.4)"  stroke-width="1.5"/>
-        <line x1="220" y1="220" x2="340" y2="290" stroke="rgba(200,168,75,.4)"  stroke-width="1.5"/>
-        <line x1="220" y1="220" x2="100" y2="290" stroke="rgba(200,168,75,.4)"  stroke-width="1.5"/>
-        <line x1="220" y1="220" x2="340" y2="150" stroke="rgba(61,139,122,.35)" stroke-width="1.5" stroke-dasharray="5 4"/>
-        <line x1="220" y1="220" x2="100" y2="150" stroke="rgba(61,139,122,.35)" stroke-width="1.5" stroke-dasharray="5 4"/>
-        <line x1="220" y1="220" x2="220" y2="352" stroke="rgba(61,139,122,.35)" stroke-width="1.5" stroke-dasharray="5 4"/>
-        <circle cx="220" cy="80"  r="15" fill="#111114" stroke="rgba(200,168,75,.7)" stroke-width="1.5"/>
-        <circle cx="340" cy="290" r="15" fill="#111114" stroke="rgba(200,168,75,.7)" stroke-width="1.5"/>
-        <circle cx="100" cy="290" r="15" fill="#111114" stroke="rgba(200,168,75,.7)" stroke-width="1.5"/>
-        <circle cx="340" cy="150" r="11" fill="#111114" stroke="rgba(61,139,122,.6)" stroke-width="1.5"/>
-        <circle cx="100" cy="150" r="11" fill="#111114" stroke="rgba(61,139,122,.6)" stroke-width="1.5"/>
-        <circle cx="220" cy="352" r="11" fill="#111114" stroke="rgba(61,139,122,.6)" stroke-width="1.5"/>
-        <text x="220" y="85"  text-anchor="middle" dominant-baseline="middle" fill="rgba(200,168,75,.9)" font-family="DM Mono,monospace" font-size="8">Ar-X</text>
-        <text x="340" y="295" text-anchor="middle" dominant-baseline="middle" fill="rgba(200,168,75,.9)" font-family="DM Mono,monospace" font-size="8">B</text>
-        <text x="100" y="295" text-anchor="middle" dominant-baseline="middle" fill="rgba(200,168,75,.9)" font-family="DM Mono,monospace" font-size="8">X</text>
-        <text x="340" y="150" text-anchor="middle" dominant-baseline="middle" fill="rgba(61,139,122,.9)" font-family="DM Mono,monospace" font-size="7">P</text>
-        <text x="100" y="150" text-anchor="middle" dominant-baseline="middle" fill="rgba(61,139,122,.9)" font-family="DM Mono,monospace" font-size="7">P</text>
-        <text x="220" y="352" text-anchor="middle" dominant-baseline="middle" fill="rgba(61,139,122,.9)" font-family="DM Mono,monospace" font-size="7">L</text>
-        <circle cx="220" cy="220" r="28" fill="#0e0e11" stroke="rgba(200,168,75,.85)" stroke-width="2"/>
-        <text x="220" y="220" text-anchor="middle" dominant-baseline="middle" fill="#c8a84b" font-family="DM Mono,monospace" font-size="13">Pd(0)</text>
-        <circle r="4.5" fill="var(--gold)" opacity=".85">
-          <animateMotion dur="10s" repeatCount="indefinite"><mpath href="#op"/></animateMotion>
-        </circle>
-        <circle r="2.5" fill="var(--teal-lt)" opacity=".6">
-          <animateMotion dur="16s" repeatCount="indefinite" keyPoints="1;0" keyTimes="0;1" calcMode="linear"><mpath href="#op"/></animateMotion>
-        </circle>
-        <path id="op" d="M 220 40 A 180 180 0 1 1 219.9 40" fill="none"/>
-      </svg>
-    </div>
+
+    <!-- Formspree: replace YOUR_FORM_ID with the id from your Formspree dashboard.
+         Without JavaScript this still works, because Formspree renders its own confirmation page. -->
+    <form class="form" id="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <div class="frow">
+        <div class="field">
+          <label class="field__label label" for="f-name">Name <span class="field__req" aria-hidden="true">*</span></label>
+          <input class="input" id="f-name" name="name" type="text" autocomplete="name" required aria-required="true" aria-describedby="h-name">
+          <p class="field__help" id="h-name"></p>
+        </div>
+        <div class="field">
+          <label class="field__label label" for="f-email">Email address <span class="field__req" aria-hidden="true">*</span></label>
+          <input class="input" id="f-email" name="email" type="email" autocomplete="email" required aria-required="true" aria-describedby="h-email">
+          <p class="field__help" id="h-email"></p>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="field__label label" for="f-org">Organisation</label>
+        <input class="input" id="f-org" name="organisation" type="text" autocomplete="organization" aria-describedby="h-org">
+        <p class="field__help" id="h-org">Optional.</p>
+      </div>
+
+      <div class="field">
+        <label class="field__label label" for="f-message">Message <span class="field__req" aria-hidden="true">*</span></label>
+        <textarea class="input" id="f-message" name="message" rows="6" required aria-required="true" aria-describedby="h-message"></textarea>
+        <p class="field__help" id="h-message"></p>
+      </div>
+
+      <p class="form__status" id="form-status" role="status" aria-live="polite"></p>
+
+      <div>
+        <button class="btn btn--primary" type="submit" id="form-submit">
+          <span class="btn__spinner" aria-hidden="true"></span>
+          <span id="form-submit-label">Send message</span>
+        </button>
+      </div>
+
+      <p class="form__fallback">Prefer not to use a form? <a class="lnk" href="mailto:stuartcsmith30@outlook.com">Email me directly.</a></p>
+    </form>
   </div>
 </section>
 
-<!-- ABOUT -->
-<section id="about">
-  <div class="wrap">
-    <div class="about-grid">
-      <div class="reveal">
-        <div class="lbl">About</div>
-        <h2 class="sec">Chemist.<br><em>Inventor. Advocate.</em></h2>
-        <div class="about-body">
-          <p>I'm a postdoctoral researcher at Durham University working at the intersection of synthetic and computational chemistry. My PhD at York focused on Csp²–Csp³ Suzuki-Miyaura cross-couplings, and my current research spans gold-catalysed systems, <em>in-situ</em> ESI-MS monitoring, and data-driven mechanistic analysis across institutions in the UK and Canada.</p>
-          <p>I hold WIPO certifications in IP (DL101) and patents (DL177), and am actively building toward a career as a trainee patent attorney — translating complex chemistry into protected innovation. I am a commissioned contributor to <em>Chemistry World</em> (RSC) on research culture and the digitalisation of chemistry.</p>
-          <p>My background includes industrial placements at AstraZeneca and GSK, AI consultancy at Outlier, a McKinsey Forward programme, and 20+ international conference presentations.</p>
-        </div>
-        <div class="pillars">
-          <div class="pill"><div class="pill-ico">⚗️</div><div class="pill-lbl">Synthesis</div><p>Pd &amp; Au-catalysis, cross-coupling methodology, Suzuki-Miyaura</p></div>
-          <div class="pill"><div class="pill-ico">💻</div><div class="pill-lbl">Computation</div><p>DFT, transition-state modelling, Gaussian, ML-driven discovery</p></div>
-          <div class="pill"><div class="pill-ico">⚖️</div><div class="pill-lbl">IP &amp; Patents</div><p>WIPO DL101 &amp; DL177, FTO analysis, pharmaceutical patent landscaping</p></div>
-          <div class="pill"><div class="pill-ico">📡</div><div class="pill-lbl">Data Science</div><p>HTE, DoE, Python, R, multivariate regression, AI for chemistry</p></div>
-        </div>
-      </div>
-      <div class="reveal" style="transition-delay:.18s">
-        <div class="stats">
-          <div class="stat"><span class="stat-n" data-t="8">0</span><span class="stat-l">Publications (incl. in prep)</span></div>
-          <div class="stat"><span class="stat-n" data-t="20">0</span><span class="stat-l">Conference Presentations</span></div>
-          <div class="stat"><span class="stat-n" data-t="5">0</span><span class="stat-l">Research Institutions · 3 Countries</span></div>
-          <div class="stat"><span class="stat-n" data-t="2027">0</span><span class="stat-l">Target Year: Trainee Patent Attorney</span></div>
-        </div>
-        <div>
-          <div class="sk-head">Technical Proficiencies</div>
-          <div class="sk-bars">
-            <div class="sk-row"><span class="sk-nm">Organic Synthesis</span><div class="sk-tr"><div class="sk-f" style="--w:.96"></div></div></div>
-            <div class="sk-row"><span class="sk-nm">Mechanistic Analysis</span><div class="sk-tr"><div class="sk-f" style="--w:.93"></div></div></div>
-            <div class="sk-row"><span class="sk-nm">DFT / Gaussian</span><div class="sk-tr"><div class="sk-f" style="--w:.82"></div></div></div>
-            <div class="sk-row"><span class="sk-nm">HTE &amp; Automation</span><div class="sk-tr"><div class="sk-f" style="--w:.86"></div></div></div>
-            <div class="sk-row"><span class="sk-nm">Python / R / SQL</span><div class="sk-tr"><div class="sk-f" style="--w:.78"></div></div></div>
-            <div class="sk-row"><span class="sk-nm">Patent Analysis</span><div class="sk-tr"><div class="sk-f" style="--w:.72"></div></div></div>
-            <div class="sk-row"><span class="sk-nm">Scientific Writing</span><div class="sk-tr"><div class="sk-f" style="--w:.91"></div></div></div>
-          </div>
-        </div>
-      </div>
-    </div>
+</main>
+
+<!-- Colophon -->
+<footer class="colophon">
+  <div class="colophon__inner">
+    <p>Stuart Cameron Smith. Postdoctoral Research Associate, Department of Chemistry, Durham University, DH1 3LE. ORCID <a href="https://orcid.org/0000-0001-7149-0463" rel="noopener">0000-0001-7149-0463</a>. Set in EB Garamond, with IBM Plex Sans for labels and data. Static files served from GitHub Pages; contact form handled by Formspree.</p>
+    <p>Publication metadata is verified against the published record and every DOI resolves to the version of record. Figures are reproduced from the open-access papers under the Creative Commons licences credited beside them. The photograph of the Gilbert Scott Building is by Diliff, used under <a href="https://creativecommons.org/licenses/by/3.0/" rel="noopener license">CC BY 3.0</a>. Institutional and company names and logos are the trademarks of their respective owners, shown here only to identify where I have studied and worked. Views expressed in the writing are my own and not those of Durham University or any collaborator. Last reviewed September 2026.</p>
   </div>
-</section>
-
-<!-- EXPERIENCE -->
-<section id="experience">
-  <div class="wrap">
-    <div class="reveal"><div class="lbl">Experience</div><h2 class="sec">Professional <em>History</em></h2></div>
-    <div class="exp-list">
-
-      <div class="exp-item reveal" style="transition-delay:.05s">
-        <div><div class="exp-period">Jun 2025 – Present</div><div class="exp-org">UBC, Canada</div></div>
-        <div>
-          <div class="exp-role">Visiting Postdoctoral Researcher — Reid Group</div>
-          <div class="exp-project">"Chlorocat: Unlocking Metal-Chloride Bonds for Data-Driven Stereoselective Catalysis."</div>
-          <ul class="exp-bullets">
-            <li>Designing experimental studies in catalytic reaction development using HTE and automated methodologies.</li>
-            <li>Applying multivariate linear regression to classify catalytic reaction mechanisms in gold-catalysed systems.</li>
-            <li>Analysing complex datasets to identify structure-reactivity relationships and optimise reaction performance.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="exp-item reveal" style="transition-delay:.07s">
-        <div><div class="exp-period">Feb – May 2025</div><div class="exp-org">Univ. of Victoria, Canada</div></div>
-        <div>
-          <div class="exp-role">Visiting Postdoctoral Researcher — McIndoe Group</div>
-          <div class="exp-project">"In-Situ Catalytic Reaction Monitoring Using Sulfonated Ligands as Handles for Mass Spectrometry."</div>
-          <ul class="exp-bullets">
-            <li>Developed <em>in-situ</em> catalytic reaction monitoring workflows using Electrospray Ionisation Mass Spectrometry.</li>
-            <li>Designed data-rich experimental strategies to enable real-time mechanistic insight.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="exp-item reveal" style="transition-delay:.09s">
-        <div><div class="exp-period">Oct 2021 – Present</div><div class="exp-org">Durham University, UK</div></div>
-        <div>
-          <div class="exp-role">Postdoctoral Researcher — Franchino Group</div>
-          <div class="exp-project">Catalytic reaction development, HTE, computational and data-driven mechanistic analysis.</div>
-          <ul class="exp-bullets">
-            <li>Tutorial Fellow at Durham; supervised MChem, BSc, and PhD researchers.</li>
-            <li>Commissioned contributor to <em>Chemistry World</em> (RSC) on research culture and digitalisation of chemistry.</li>
-            <li>Active member of Prosper Postdoctoral Career Development Programme at Durham.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="exp-item reveal" style="transition-delay:.11s">
-        <div><div class="exp-period">Nov 2024 – Jan 2025</div><div class="exp-org">Outlier AI</div></div>
-        <div>
-          <div class="exp-role">Freelance Consultant — AI for Chemistry</div>
-          <div class="exp-project">"Training Generative Artificial Intelligence Models for Chemical Applications."</div>
-          <ul class="exp-bullets">
-            <li>Trained and evaluated generative AI models; curated and annotated chemical datasets for ML workflows.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="exp-item reveal" style="transition-delay:.13s">
-        <div><div class="exp-period">Oct 2023 – Feb 2024</div><div class="exp-org">AstraZeneca, UK</div></div>
-        <div>
-          <div class="exp-role">Postgraduate CASE Researcher — Early Chemical Development</div>
-          <div class="exp-project">"HTE for Csp²–Csp³ Suzuki-Miyaura Cross-Couplings of Oxocyclic Boronates."</div>
-          <ul class="exp-bullets">
-            <li>Designed and implemented high-throughput reaction screening strategies using Design-of-Experiments.</li>
-            <li>Designed parallelised screening including high-pressure hydrogenation and flow lithiation.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="exp-item reveal" style="transition-delay:.15s">
-        <div><div class="exp-period">Jun 2019 – Jul 2020</div><div class="exp-org">GSK, UK</div></div>
-        <div>
-          <div class="exp-role">Undergraduate CASE Researcher — Process Development</div>
-          <div class="exp-project">"Process-Scale Implementation of a Novel Integrase Strand Transfer Inhibitor."</div>
-          <ul class="exp-bullets">
-            <li>Supported process-scale synthetic development in industrial chemical development and optimisation.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="exp-item reveal" style="transition-delay:.17s">
-        <div><div class="exp-period">Apr 2026 – Present</div><div class="exp-org">Self-employed</div></div>
-        <div>
-          <div class="exp-role">Private Tutor — GCSE &amp; A-Level Chemistry</div>
-          <div class="exp-project">Enhanced DBS certified. Organic chemistry specialism.</div>
-          <ul class="exp-bullets">
-            <li>Providing one-to-one and small group tuition in organic chemistry for GCSE and A-level students.</li>
-          </ul>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- PUBLICATIONS -->
-<section id="pubs">
-  <div class="wrap">
-    <div class="reveal"><div class="lbl">Research</div><h2 class="sec">Publications &amp;<br><em>Manuscripts</em></h2></div>
-    <div class="pub-list">
-
-      <div class="pub-item reveal" style="transition-delay:.04s">
-        <div class="pub-year">2025</div>
-        <div>
-          <div class="pub-journal">J. Chem. Educ.</div>
-          <div class="pub-title">Data-Led Suzuki-Miyaura Reaction Optimisation: Development of a Short Course for Postgraduate Synthetic Chemists</div>
-          <div class="pub-authors"><strong>S. C. Smith</strong>, B. F. Franklin, C. S. Horbaczewskyj, J. D. D'Souza Metcalf, J. J. Walder, I. J. S. Fairlamb — <em>J. Chem. Educ.</em>, 2025, 102(2), 697–703</div>
-          <span class="pub-badge pub">Published</span>
-        </div>
-      </div>
-
-      <div class="pub-item reveal" style="transition-delay:.06s">
-        <div class="pub-year">2025</div>
-        <div>
-          <div class="pub-journal">RSC Sustainability</div>
-          <div class="pub-title">Practical Atmospheric Photochemical Kinetics for Undergraduate Teaching and Research</div>
-          <div class="pub-authors">J. D'Souza Metcalf, R. Winkless, A. Robinson, <strong>S. C. Smith</strong>, A. R. Rickard, T. J. Dillon — <em>RSC Sustainability</em>, 2025, 3, 5146–5154</div>
-          <span class="pub-badge pub">Published</span>
-        </div>
-      </div>
-
-      <div class="pub-item reveal" style="transition-delay:.08s">
-        <div class="pub-year">2024</div>
-        <div>
-          <div class="pub-journal">Digital Discovery</div>
-          <div class="pub-title">Automated Approaches, Reaction Parameterisation, and Data Science in Organometallic Chemistry and Catalysis</div>
-          <div class="pub-authors"><strong>S. C. Smith</strong>, C. S. Horbaczewskyj, T. F. N. Tanner, J. J. Walder, I. J. S. Fairlamb — <em>Digital Discovery</em>, 2024, <strong>3</strong>, 1467–1495</div>
-          <span class="pub-badge pub">Published</span>
-        </div>
-      </div>
-
-      <div class="pub-item reveal" style="transition-delay:.1s">
-        <div class="pub-year">In press</div>
-        <div>
-          <div class="pub-journal">Patai's Chemistry of Functional Groups</div>
-          <div class="pub-title">The Chemistry of Organopalladium Compounds — Chapter: Redox-Active Palladium Ligands</div>
-          <div class="pub-authors"><strong>S. C. Smith</strong> (co-author)</div>
-          <span class="pub-badge press">In Press</span>
-        </div>
-      </div>
-
-      <div class="pub-item reveal" style="transition-delay:.12s">
-        <div class="pub-year">In prep</div>
-        <div>
-          <div class="pub-journal">Nat. Commun. (target)</div>
-          <div class="pub-title">Pre-transmetalation Intermediates in Csp²–Csp³ Suzuki-Miyaura Cross-Couplings</div>
-          <div class="pub-authors"><strong>S. C. Smith</strong> (Lead Author) — Advanced stage of preparation</div>
-          <span class="pub-badge prep">In Preparation</span>
-        </div>
-      </div>
-
-      <div class="pub-item reveal" style="transition-delay:.14s">
-        <div class="pub-year">In prep</div>
-        <div>
-          <div class="pub-journal">J. Am. Chem. Soc. (target)</div>
-          <div class="pub-title">Mechanistic Understanding of Csp²–Csp³ Suzuki-Miyaura Cross-Couplings</div>
-          <div class="pub-authors"><strong>S. C. Smith</strong> (Lead Author) — Advanced stage of preparation</div>
-          <span class="pub-badge prep">In Preparation</span>
-        </div>
-      </div>
-
-      <div class="pub-item reveal" style="transition-delay:.16s">
-        <div class="pub-year">In prep</div>
-        <div>
-          <div class="pub-journal">J. Am. Chem. Soc. (target)</div>
-          <div class="pub-title">Stereoselective Csp²–Csp³ Suzuki-Miyaura Cross-Couplings of Saturated Heterocycles</div>
-          <div class="pub-authors"><strong>S. C. Smith</strong> — In preparation</div>
-          <span class="pub-badge prep">In Preparation</span>
-        </div>
-      </div>
-
-      <div class="pub-item reveal" style="transition-delay:.18s">
-        <div class="pub-year">In prep</div>
-        <div>
-          <div class="pub-journal">Nat. Chem. (target)</div>
-          <div class="pub-title">Synthesis and Applications of Highly Fluorinated Alkylphosphines in Catalysis</div>
-          <div class="pub-authors"><strong>S. C. Smith</strong> (Lead Author) — Advanced stage of preparation</div>
-          <span class="pub-badge prep">In Preparation</span>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- AWARDS -->
-<section id="awards">
-  <div class="wrap">
-    <div class="reveal"><div class="lbl">Recognition</div><h2 class="sec">Awards &amp;<br><em>Honours</em></h2></div>
-    <div class="awards-grid">
-      <div class="award-card reveal">
-        <div class="award-ico">🏅</div>
-        <div class="award-title">Vice-Chancellor's Award for Postgraduate Research</div>
-        <div class="award-body">University of York — recognising outstanding contribution to postdoctoral research.</div>
-      </div>
-      <div class="award-card reveal" style="transition-delay:.07s">
-        <div class="award-ico">🎓</div>
-        <div class="award-title">York Learning &amp; Teaching Award</div>
-        <div class="award-body">Excellence in Pedagogical Practice — recognised for exceptional teaching contribution at York.</div>
-      </div>
-      <div class="award-card reveal" style="transition-delay:.1s">
-        <div class="award-ico">🔬</div>
-        <div class="award-title">Roger J. Mawby Prize for Practical Teaching</div>
-        <div class="award-body">Awarded during doctoral studies at York for excellence in practical laboratory instruction.</div>
-      </div>
-      <div class="award-card reveal" style="transition-delay:.13s">
-        <div class="award-ico">🌍</div>
-        <div class="award-title">RSC International Collaboration Grant — £5,000</div>
-        <div class="award-body">Competitive national funding supporting international research collaboration in catalysis.</div>
-      </div>
-      <div class="award-card reveal" style="transition-delay:.16s">
-        <div class="award-ico">🏫</div>
-        <div class="award-title">Carnegie Trust Scholar — £2,000</div>
-        <div class="award-body">University of Glasgow, 2017. Competitive undergraduate research scholarship.</div>
-      </div>
-      <div class="award-card reveal" style="transition-delay:.19s">
-        <div class="award-ico">🚀</div>
-        <div class="award-title">Prosper Postdoctoral Programme</div>
-        <div class="award-body">Durham University — leadership potential and cross-sector impact recognition.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact">
-  <div class="wrap">
-    <div class="contact-grid">
-      <div class="reveal">
-        <div class="lbl">Contact</div>
-        <h2 class="sec">Let's <em>Connect</em></h2>
-        <p class="contact-lede">Whether you're a patent law firm, a research collaborator, interested in my <em>Chemistry World</em> writing, or looking for a chemistry tutor — I'd love to hear from you.</p>
-        <div class="clinks">
-          <a href="mailto:stuartcsmith30@outlook.com" class="clink"><span class="clink-ico">✉</span>stuartcsmith30@outlook.com<span class="clink-tag">Email</span></a>
-          <a href="https://linkedin.com/in/stuartcsmith" target="_blank" class="clink"><span class="clink-ico">in</span>linkedin.com/in/stuartcsmith<span class="clink-tag">LinkedIn</span></a>
-          <a href="https://orcid.org" target="_blank" class="clink"><span class="clink-ico">◎</span>ORCID Profile<span class="clink-tag">ORCID</span></a>
-          <a href="#" class="clink"><span class="clink-ico">📄</span>Download CV<span class="clink-tag">PDF</span></a>
-        </div>
-      </div>
-      <div class="reveal" style="transition-delay:.18s">
-        <form class="cform" id="cf" novalidate>
-          <div class="frow">
-            <div class="fg"><label class="fl" for="fn">Name</label><input class="fc" id="fn" type="text" placeholder="Your name" required/></div>
-            <div class="fg"><label class="fl" for="fe">Email</label><input class="fc" id="fe" type="email" placeholder="your@email.com" required/></div>
-          </div>
-          <div class="fg"><label class="fl" for="fs">Subject</label><input class="fc" id="fs" type="text" placeholder="Patent law, collaboration, tutoring…"/></div>
-          <div class="fg"><label class="fl" for="fm">Message</label><textarea class="fc" id="fm" rows="6" placeholder="Tell me what's on your mind…" required></textarea></div>
-          <div id="fstatus"></div>
-          <button type="submit" class="btn btn-g" style="align-self:flex-start">Send Message →</button>
-        </form>
-      </div>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <div class="fc-copy">© 2025 <span>Stuart C. Smith</span> · PhD · MRSC · AFHEA · Durham University</div>
-  <div class="fc-qt">Science in service of innovation</div>
 </footer>
 
-<script>
-// Cursor
-const cur=document.getElementById('cur'),cr=document.getElementById('cur-r');
-let mx=-200,my=-200,rx=-200,ry=-200;
-document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px'});
-(function tick(){rx+=(mx-rx)*.11;ry+=(my-ry)*.11;cr.style.left=rx+'px';cr.style.top=ry+'px';requestAnimationFrame(tick)})();
-document.querySelectorAll('a,button,.award-card,.exp-item,.pub-item').forEach(el=>{
-  el.addEventListener('mouseenter',()=>{cur.style.width='16px';cur.style.height='16px';cr.style.width='48px';cr.style.height='48px'});
-  el.addEventListener('mouseleave',()=>{cur.style.width='8px';cur.style.height='8px';cr.style.width='32px';cr.style.height='32px'});
-});
-
-// Nav scroll
-const nav=document.getElementById('nav');
-window.addEventListener('scroll',()=>nav.classList.toggle('s',scrollY>60));
-
-// Scroll reveal
-const ro=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');ro.unobserve(e.target)}}),{threshold:.1});
-document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
-
-// Skill bars
-const so=new IntersectionObserver(es=>es.forEach(e=>{
-  if(e.isIntersecting){
-    e.target.querySelectorAll('.sk-f').forEach(b=>{
-      const w=parseFloat(b.style.cssText.match(/--w:([\d.]+)/)?.[1]||1);
-      b.style.transform=`scaleX(${w})`;
-    });
-    so.unobserve(e.target);
-  }
-}),{threshold:.25});
-document.querySelectorAll('.sk-bars').forEach(el=>so.observe(el));
-
-// Counters
-const co=new IntersectionObserver(es=>es.forEach(e=>{
-  if(!e.isIntersecting)return;
-  const el=e.target,t=parseInt(el.dataset.t),dur=1500;let s=0;
-  const f=ts=>{if(!s)s=ts;const p=Math.min((ts-s)/dur,1),ea=1-Math.pow(1-p,3);el.textContent=Math.round(ea*t);if(p<1)requestAnimationFrame(f)};
-  requestAnimationFrame(f);co.unobserve(el);
-}),{threshold:.5});
-document.querySelectorAll('[data-t]').forEach(el=>co.observe(el));
-
-// Canvas network
-const canvas=document.getElementById('bg'),ctx=canvas.getContext('2d');
-let W,H,pts=[];
-function resize(){W=canvas.width=innerWidth;H=canvas.height=innerHeight;pts=Array.from({length:55},()=>({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.25,vy:(Math.random()-.5)*.25,r:Math.random()*2+1}))}
-function draw(){
-  ctx.clearRect(0,0,W,H);
-  pts.forEach(p=>{p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>W)p.vx*=-1;if(p.y<0||p.y>H)p.vy*=-1;ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle='rgba(200,168,75,.65)';ctx.fill()});
-  for(let i=0;i<pts.length;i++)for(let j=i+1;j<pts.length;j++){
-    const dx=pts[i].x-pts[j].x,dy=pts[i].y-pts[j].y,d=Math.sqrt(dx*dx+dy*dy);
-    if(d<120){ctx.beginPath();ctx.moveTo(pts[i].x,pts[i].y);ctx.lineTo(pts[j].x,pts[j].y);ctx.strokeStyle=`rgba(200,168,75,${.14*(1-d/120)})`;ctx.lineWidth=.5;ctx.stroke()}
-  }
-  requestAnimationFrame(draw);
-}
-window.addEventListener('resize',resize);resize();draw();
-
-// Active nav on scroll
-const secs=document.querySelectorAll('section[id]'),nls=document.querySelectorAll('.nav-ul a');
-window.addEventListener('scroll',()=>{
-  let cur2=null;
-  secs.forEach(s=>{if(s.getBoundingClientRect().top<=120)cur2=s.id});
-  nls.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+cur2));
-});
-
-// Contact form
-document.getElementById('cf').addEventListener('submit',function(e){
-  e.preventDefault();
-  const n=document.getElementById('fn').value.trim(),em=document.getElementById('fe').value.trim(),m=document.getElementById('fm').value.trim();
-  const st=document.getElementById('fstatus');
-  if(!n||!em||!m){st.className='err';st.textContent='Please fill in your name, email and message.';return}
-  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)){st.className='err';st.textContent='Please enter a valid email address.';return}
-  const btn=this.querySelector('button');btn.textContent='Sending…';btn.disabled=true;
-  setTimeout(()=>{st.className='ok';st.textContent='✓ Message received — I\'ll be in touch shortly.';this.reset();btn.textContent='Send Message →';btn.disabled=false},1300);
-});
-</script>
+<script src="site.js" defer></script>
 </body>
 </html>
