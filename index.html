@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
-<link rel="stylesheet" href="site.css">
+<link rel="stylesheet" href="site.css?v=7">
 
 <script type="application/ld+json">
 {
@@ -47,15 +47,20 @@
 
 <a class="skip" href="#opening">Skip to content</a>
 
-<header class="head">
-  <a class="head__logo" href="#opening" aria-label="Stuart Cameron Smith, back to top">
-    <span class="el"><span class="el__z">16</span><span class="el__sym">S</span></span>
-    <span class="el"><span class="el__z">55</span><span class="el__sym">Cs</span></span>
-  </a>
+<header class="head" id="top">
+  <div class="head__bar">
+    <a class="head__logo" href="#top" aria-label="Back to top">
+      <span class="el"><span class="el__z">16</span><span class="el__sym">S</span></span>
+      <span class="el"><span class="el__z">55</span><span class="el__sym">Cs</span></span>
+    </a>
 
-  <button class="head__menu" type="button" aria-expanded="false" aria-controls="head-nav">
-    <span class="head__menu-label">Sections</span>
-  </button>
+    <h1 class="head__name">Stuart Cameron Smith</h1>
+
+    <div class="head__end">
+      <button class="head__menu" type="button" aria-expanded="false" aria-controls="head-nav">Sections</button>
+      <a class="head__top" href="#top">Top</a>
+    </div>
+  </div>
 
   <nav class="head__nav" id="head-nav" aria-label="Sections">
     <a href="#publications">Publications</a>
@@ -65,15 +70,12 @@
     <a href="#record">Record</a>
     <a href="#contact">Contact</a>
   </nav>
-
-  <a class="head__top" href="#opening">Top</a>
 </header>
 
 <main class="doc">
 
 <!-- ============================ OPENING ============================ -->
 <section class="sec sec--open" id="opening">
-  <h1>Stuart Cameron Smith</h1>
   <p class="open__creds">PhD · MSci · MRSC · AFHEA. Durham University</p>
 
   <div class="seeking">
@@ -356,7 +358,6 @@
 
   <div class="contact">
     <div class="contact__side">
-      <img class="portrait" src="assets/stuart-smith.jpg" alt="Stuart Cameron Smith" width="400" height="400" loading="lazy">
       <ul class="direct">
         <li><a href="mailto:stuartcsmith30@outlook.com">stuartcsmith30@outlook.com<span class="direct__tag label">Email</span></a></li>
         <li><a href="tel:+447783013996">07783 013996<span class="direct__tag label">Phone</span></a></li>
@@ -364,6 +365,9 @@
         <li><a href="https://orcid.org/0000-0001-7149-0463" rel="noopener">0000-0001-7149-0463<span class="direct__tag label">ORCID</span></a></li>
         <li><a href="assets/Stuart_Smith_CV.docx" download>Curriculum vitae<span class="direct__tag label">PDF</span></a></li>
       </ul>
+      <figure class="shot">
+        <img class="portrait" src="assets/stuart-smith.jpg" alt="Stuart Cameron Smith" width="400" height="400" loading="lazy">
+      </figure>
     </div>
 
     <!-- Submissions go to Formspree. Without JavaScript this still works,
@@ -418,6 +422,6 @@
   </div>
 </footer>
 
-<script src="site.js" defer></script>
+<script src="site.js?v=7" defer></script>
 </body>
 </html>
