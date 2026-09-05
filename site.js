@@ -2,6 +2,8 @@
 (function () {
   "use strict";
 
+  var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
   /* ================================================================
      Header: active section tracking, and the disclosure menu on
      viewports too narrow for the links to sit inline.
@@ -31,6 +33,30 @@
     }, { rootMargin: "-25% 0px -60% 0px", threshold: 0 });
 
     sections.forEach(function (s) { io.observe(s); });
+  }
+
+  // Top. The header is position: fixed, so it is always in view and an anchor
+  // to it never scrolls anything. Send the page to a true zero instead, and
+  // leave the href as the no-script fallback.
+  var topBtn = document.querySelector(".head__top");
+  if (topBtn) {
+    topBtn.addEventListener("click", function (e) {
+      e.preventDefault();
+      var start = window.scrollY;
+      window.scrollTo({ top: 0, behavior: reduced ? "auto" : "smooth" });
+
+      // Smooth scrolling is animation-driven and does nothing in a page that
+      // is not painting. If nothing has moved shortly after, jump instead, so
+      // the button can never silently do nothing.
+      window.setTimeout(function () {
+        if (window.scrollY === start && start !== 0) {
+          window.scrollTo({ top: 0, behavior: "auto" });
+        }
+      }, 350);
+      // Move focus to the start of the document so keyboard users follow.
+      var first = document.querySelector("main");
+      if (first) { first.setAttribute("tabindex", "-1"); first.focus({ preventScroll: true }); }
+    });
   }
 
   var menuBtn = document.querySelector(".head__menu");
@@ -125,7 +151,6 @@
      Section reveal: one quiet entrance each, once.
      ================================================================ */
 
-  var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var secs = Array.prototype.slice.call(document.querySelectorAll(".sec"));
 
   if (!reduced && "IntersectionObserver" in window && secs.length) {
