@@ -47,51 +47,34 @@
 
 <a class="skip" href="#opening">Skip to content</a>
 
-<!-- Side-rail (desktop) -->
-<nav class="rail" aria-label="Sections">
-  <a class="rail__mark" href="#opening">Stuart&nbsp;C.&nbsp;Smith</a>
-  <div class="mono" role="img" aria-label="Sulfur and caesium: the element symbols S and Cs">
-    <span class="el">
-      <span class="el__z">16</span>
-      <span class="el__sym">S</span>
-      <span class="el__name">Sulfur</span>
-      <span class="el__mass">32.06</span>
-    </span>
-    <span class="el">
-      <span class="el__z">55</span>
-      <span class="el__sym">Cs</span>
-      <span class="el__name">Caesium</span>
-      <span class="el__mass">132.91</span>
-    </span>
-  </div>
-  <ul class="rail__list">
-    <li><a class="rail__link" href="#opening"><span class="rail__dot" aria-hidden="true"></span>Opening</a></li>
-    <li><a class="rail__link" href="#publications"><span class="rail__dot" aria-hidden="true"></span>Publications</a></li>
-    <li><a class="rail__link" href="#research"><span class="rail__dot" aria-hidden="true"></span>Research</a></li>
-    <li><a class="rail__link" href="#teaching"><span class="rail__dot" aria-hidden="true"></span>Teaching</a></li>
-    <li><a class="rail__link" href="#writing"><span class="rail__dot" aria-hidden="true"></span>Writing</a></li>
-    <li><a class="rail__link" href="#record"><span class="rail__dot" aria-hidden="true"></span>Record</a></li>
-    <li><a class="rail__link" href="#contact"><span class="rail__dot" aria-hidden="true"></span>Contact</a></li>
-  </ul>
-</nav>
+<header class="head">
+  <a class="head__logo" href="#opening" aria-label="Stuart Cameron Smith, back to top">
+    <span class="el"><span class="el__z">16</span><span class="el__sym">S</span></span>
+    <span class="el"><span class="el__z">55</span><span class="el__sym">Cs</span></span>
+  </a>
 
-<!-- Rail fallback below 60rem -->
-<div class="topbar">
-  <a class="topbar__mark" href="#opening">Stuart&nbsp;C.&nbsp;Smith</a>
-  <a class="topbar__link label" href="#contact">Contact</a>
-</div>
+  <button class="head__menu" type="button" aria-expanded="false" aria-controls="head-nav">
+    <span class="head__menu-label">Sections</span>
+  </button>
+
+  <nav class="head__nav" id="head-nav" aria-label="Sections">
+    <a href="#publications">Publications</a>
+    <a href="#research">Research</a>
+    <a href="#teaching">Teaching</a>
+    <a href="#writing">Writing</a>
+    <a href="#record">Record</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <a class="head__top" href="#opening">Top</a>
+</header>
 
 <main class="doc">
 
 <!-- ============================ OPENING ============================ -->
 <section class="sec sec--open" id="opening">
-  <div class="open__head">
-    <div class="open__id">
-      <h1>Stuart Cameron Smith</h1>
-      <p class="open__creds">PhD · MSci · MRSC · AFHEA. Durham University</p>
-    </div>
-    <img class="portrait" src="assets/stuart-smith.jpg" alt="Stuart Cameron Smith" width="400" height="400" fetchpriority="high">
-  </div>
+  <h1>Stuart Cameron Smith</h1>
+  <p class="open__creds">PhD · MSci · MRSC · AFHEA. Durham University</p>
 
   <div class="seeking">
     <span class="seeking__label label">Currently applying</span>
@@ -372,7 +355,8 @@
   </div>
 
   <div class="contact">
-    <div>
+    <div class="contact__side">
+      <img class="portrait" src="assets/stuart-smith.jpg" alt="Stuart Cameron Smith" width="400" height="400" loading="lazy">
       <ul class="direct">
         <li><a href="mailto:stuartcsmith30@outlook.com">stuartcsmith30@outlook.com<span class="direct__tag label">Email</span></a></li>
         <li><a href="tel:+447783013996">07783 013996<span class="direct__tag label">Phone</span></a></li>

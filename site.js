@@ -3,12 +3,12 @@
   "use strict";
 
   /* ================================================================
-     Side-rail: active section tracking.
-     IntersectionObserver, never a scroll listener.
+     Header: active section tracking, and the disclosure menu on
+     viewports too narrow for the links to sit inline.
      ================================================================ */
 
-  var railLinks = Array.prototype.slice.call(document.querySelectorAll(".rail__link"));
-  var sections  = railLinks
+  var navLinks = Array.prototype.slice.call(document.querySelectorAll(".head__nav a"));
+  var sections = navLinks
     .map(function (a) { return document.querySelector(a.getAttribute("href")); })
     .filter(Boolean);
 
@@ -17,22 +17,56 @@
 
     var setCurrent = function () {
       var top = sections.filter(function (s) { return visible.has(s.id); })[0];
-      railLinks.forEach(function (a) {
-        var on = top && a.getAttribute("href") === "#" + top.id;
-        if (on) { a.setAttribute("aria-current", "true"); }
-        else    { a.removeAttribute("aria-current"); }
+      navLinks.forEach(function (a) {
+        if (top && a.getAttribute("href") === "#" + top.id) { a.setAttribute("aria-current", "true"); }
+        else { a.removeAttribute("aria-current"); }
       });
     };
 
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
-        if (e.isIntersecting) { visible.add(e.target.id); }
-        else { visible.delete(e.target.id); }
+        if (e.isIntersecting) { visible.add(e.target.id); } else { visible.delete(e.target.id); }
       });
       setCurrent();
     }, { rootMargin: "-25% 0px -60% 0px", threshold: 0 });
 
     sections.forEach(function (s) { io.observe(s); });
+  }
+
+  var menuBtn = document.querySelector(".head__menu");
+  var menu    = document.getElementById("head-nav");
+
+  if (menuBtn && menu) {
+    var setMenu = function (open) {
+      menu.classList.toggle("is-open", open);
+      menuBtn.setAttribute("aria-expanded", String(open));
+    };
+
+    menuBtn.addEventListener("click", function () {
+      setMenu(menuBtn.getAttribute("aria-expanded") !== "true");
+    });
+
+    // Choosing a section closes the menu and lets the anchor do the scrolling.
+    navLinks.forEach(function (a) {
+      a.addEventListener("click", function () { setMenu(false); });
+    });
+
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && menuBtn.getAttribute("aria-expanded") === "true") {
+        setMenu(false);
+        menuBtn.focus();
+      }
+    });
+
+    document.addEventListener("click", function (e) {
+      if (menuBtn.getAttribute("aria-expanded") !== "true") { return; }
+      if (!menu.contains(e.target) && e.target !== menuBtn && !menuBtn.contains(e.target)) { setMenu(false); }
+    });
+
+    // Widening past the breakpoint must not leave the panel state stuck.
+    window.matchMedia("(min-width: 62rem)").addEventListener("change", function (ev) {
+      if (ev.matches) { setMenu(false); }
+    });
   }
 
   /* ================================================================
