@@ -121,65 +121,6 @@
   }
 
   /* ================================================================
-     Figure carousel. Auto-advances, but pauses on hover, on focus,
-     when the tab is hidden, and never starts under reduced motion.
-     ================================================================ */
-
-  var car = document.getElementById("figures");
-  if (car) {
-    var track  = car.querySelector(".carousel__track");
-    var slides = Array.prototype.slice.call(car.querySelectorAll(".slide"));
-    var readout = car.querySelector(".carousel__status");
-    var toggle = car.querySelector(".carousel__toggle");
-    var steps  = Array.prototype.slice.call(car.querySelectorAll(".carousel__btn"));
-    var idx = 0, timer = null, paused = reduced, hovering = false;
-
-    var render = function () {
-      track.style.transform = "translateX(" + (-idx * 100) + "%)";
-      slides.forEach(function (s, n) { s.setAttribute("aria-hidden", String(n !== idx)); });
-      readout.textContent = "Figure " + (idx + 1) + " of " + slides.length;
-    };
-
-    var go = function (step) { idx = (idx + step + slides.length) % slides.length; render(); };
-
-    var stop  = function () { if (timer) { window.clearInterval(timer); timer = null; } };
-    var start = function () {
-      stop();
-      if (paused || hovering || document.hidden) { return; }
-      timer = window.setInterval(function () { go(1); }, 7000);
-    };
-
-    steps.forEach(function (b) {
-      b.addEventListener("click", function () { go(parseInt(b.dataset.step, 10)); start(); });
-    });
-
-    toggle.addEventListener("click", function () {
-      paused = !paused;
-      toggle.setAttribute("aria-pressed", String(paused));
-      toggle.textContent = paused ? "Play" : "Pause";
-      start();
-    });
-
-    // Pause while the reader is actually looking at or using it.
-    car.addEventListener("mouseenter", function () { hovering = true;  stop(); });
-    car.addEventListener("mouseleave", function () { hovering = false; start(); });
-    car.addEventListener("focusin",    function () { hovering = true;  stop(); });
-    car.addEventListener("focusout",   function () {
-      if (!car.contains(document.activeElement)) { hovering = false; start(); }
-    });
-    document.addEventListener("visibilitychange", function () { document.hidden ? stop() : start(); });
-
-    car.addEventListener("keydown", function (e) {
-      if (e.key === "ArrowRight") { e.preventDefault(); go(1);  start(); }
-      if (e.key === "ArrowLeft")  { e.preventDefault(); go(-1); start(); }
-    });
-
-    if (reduced) { toggle.textContent = "Play"; toggle.setAttribute("aria-pressed", "true"); }
-    render();
-    start();
-  }
-
-  /* ================================================================
      Contact form: validate on blur once touched, eight button states.
      ================================================================ */
 
